@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Highlight Saver</title>
+<link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wordmark">
+      <span class="wordmark-stripe"></span>
+      <h1>Highlights</h1>
+    </div>
+    <button id="settingsToggle" class="icon-btn" title="Settings" aria-label="Settings">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+        <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="1.7"/>
+        <path d="M19.4 13.5c.04-.33.06-.66.06-1s-.02-.67-.06-1l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.4.96a7.4 7.4 0 0 0-1.73-1L14.5 3.3a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.4 2.49a7.4 7.4 0 0 0-1.73 1l-2.4-.96a.5.5 0 0 0-.6.22L2.6 9.28a.5.5 0 0 0 .12.64L4.75 11.5c-.04.33-.06.66-.06 1s.02.67.06 1L2.72 15.08a.5.5 0 0 0-.12.64l1.92 3.32a.5.5 0 0 0 .6.22l2.4-.96c.53.42 1.1.76 1.73 1l.4 2.49a.5.5 0 0 0 .5.42h3.84a.5.5 0 0 0 .5-.42l.4-2.49a7.4 7.4 0 0 0 1.73-1l2.4.96a.5.5 0 0 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64L19.4 13.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </header>
+
+  <section id="settingsPanel" class="settings-panel hidden">
+    <label for="apiKeyInput">OpenAI API key <span class="settings-hint">(used only for Summarize, stored on this device)</span></label>
+    <div class="settings-row">
+      <input id="apiKeyInput" type="password" placeholder="sk-..." autocomplete="off" />
+      <button id="saveKeyBtn" class="btn btn-dark">Save</button>
+    </div>
+    <p id="keyStatus" class="settings-status"></p>
+  </section>
+
+  <main id="listWrap" class="list-wrap">
+    <ul id="highlightList" class="highlight-list"></ul>
+    <div id="emptyState" class="empty-state hidden">
+      <div class="empty-mark"></div>
+      <p><strong>Nothing highlighted yet.</strong></p>
+      <p class="muted">Select text on any page, then click "Save Highlight?" to start your collection.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span id="countLabel">0 saved</span>
+  </footer>
+
+  <template id="cardTemplate">
+    <li class="card">
+      <blockquote class="card-text"><span class="mark"></span></blockquote>
+      <div class="card-summary hidden"></div>
+      <div class="card-meta">
+        <span class="card-source"></span>
+        <span class="card-time"></span>
+      </div>
+      <div class="card-actions">
+        <button class="link-btn summarize-btn">Summarize</button>
+        <button class="link-btn danger delete-btn">Delete</button>
+      </div>
+    </li>
+  </template>
+
+  <script src="popup.js"></script>
+</body>
+</html>

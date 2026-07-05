@@ -1,0 +1,307 @@
+:root {
+  --ink: #1a1a2e;
+  --ink-soft: #2b2b48;
+  --paper: #fafaf8;
+  --line: #e7e5db;
+  --muted: #767489;
+  --yellow: #f4e04d;
+  --mint: #6fe3b4;
+  --coral: #ff8fa3;
+  --sky: #7ec8f2;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 380px;
+  max-height: 580px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ---------- Header ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+.wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+
+.wordmark-stripe {
+  width: 8px;
+  height: 20px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--yellow), var(--mint));
+  transform: rotate(-6deg);
+  display: inline-block;
+}
+
+.topbar h1 {
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.icon-btn {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.icon-btn:hover {
+  background: var(--line);
+  color: var(--ink);
+}
+
+/* ---------- Settings drawer ---------- */
+.settings-panel {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  background: #f2f1ea;
+  flex-shrink: 0;
+}
+
+.settings-panel.hidden {
+  display: none;
+}
+
+.settings-panel label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.settings-hint {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.settings-row {
+  display: flex;
+  gap: 8px;
+}
+
+#apiKeyInput {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 8px 10px;
+  font-size: 13px;
+  background: #fff;
+  color: var(--ink);
+}
+
+#apiKeyInput:focus {
+  outline: 2px solid var(--sky);
+  outline-offset: 1px;
+}
+
+.settings-status {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+  min-height: 14px;
+}
+
+.settings-status.ok {
+  color: #2f9e6e;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  border: none;
+  border-radius: 7px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-dark {
+  background: var(--ink);
+  color: #fff;
+}
+
+.btn-dark:hover {
+  background: var(--ink-soft);
+}
+
+.link-btn {
+  border: none;
+  background: none;
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 2px;
+  border-bottom: 1px solid transparent;
+}
+
+.link-btn:hover {
+  border-bottom-color: currentColor;
+}
+
+.link-btn:disabled {
+  color: var(--muted);
+  cursor: default;
+  border-bottom-color: transparent;
+}
+
+.link-btn.danger {
+  color: #c14b5f;
+}
+
+/* ---------- List ---------- */
+.list-wrap {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 0 2px;
+}
+
+.highlight-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.card-text {
+  margin: 0 0 8px;
+  font-family: Georgia, "Iowan Old Style", serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.card-text .mark {
+  background: linear-gradient(
+    to bottom,
+    transparent 60%,
+    var(--mark-color, var(--yellow)) 60%
+  );
+  padding: 0 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.card-summary {
+  margin: 0 0 8px;
+  padding: 8px 10px;
+  background: #f2f1ea;
+  border-left: 3px solid var(--mark-color, var(--yellow));
+  border-radius: 0 6px 6px 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.card-summary.hidden,
+.hidden {
+  display: none !important;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.card-source {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 250px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 16px;
+}
+
+/* ---------- Empty state ---------- */
+.empty-state {
+  text-align: center;
+  padding: 46px 30px;
+  color: var(--muted);
+}
+
+.empty-mark {
+  width: 34px;
+  height: 10px;
+  margin: 0 auto 18px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--yellow), var(--mint), var(--sky), var(--coral));
+  transform: rotate(-4deg);
+}
+
+.empty-state p {
+  margin: 4px 0;
+  font-size: 13px;
+}
+
+.empty-state .muted {
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  flex-shrink: 0;
+  padding: 9px 18px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Scrollbar ---------- */
+.list-wrap::-webkit-scrollbar {
+  width: 8px;
+}
+.list-wrap::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 4px;
+}
+.list-wrap::-webkit-scrollbar-track {
+  background: transparent;
+}
